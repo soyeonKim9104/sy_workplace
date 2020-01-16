@@ -16,8 +16,7 @@
 }
 
 body {
-    background: #1c1f22;
-    padding: 0;
+    background: #242a38;
     margin: 0;
 }
 
@@ -31,7 +30,7 @@ body {
     right: 0;
     width: 15px;
     border-radius: 15px;
-    background: linear-gradient(to top, #fcb045, #fd1d1d, #833ab4);
+    background: linear-gradient(to top, #dc7b08, #ffa31c, #fbad27);
 }
 
 .navIcon,
@@ -97,7 +96,7 @@ h1, h2, h3, h4, h5, a {
 
 .sideBar {
     position: fixed;
-    background: #000000;
+    background: #20242f;
     left: 0;
     top: 0;
     width: 80px;
@@ -107,7 +106,7 @@ h1, h2, h3, h4, h5, a {
 
 #cate {
     position: fixed;
-    background: #000000;
+    background: #20242f;
     top: 0;
     left: 0;
     width: 420px;
@@ -193,14 +192,15 @@ h1, h2, h3, h4, h5, a {
     align-items: center;
     width: 23%;
     height: 25vh;
-    background: #272c30;
-    background: linear-gradient(132deg, #272c30 0%, #1c1f22 100%);
+    background: #141b21;
+    /*background: linear-gradient(132deg, #272c30 0%, #1c1f22 100%);*/
     border-radius: 1.5vw;
     text-decoration: none;
     color: #ffffff;
     font-size: 1.2rem;
     font-weight: bold;
     margin: 1%;
+    box-shadow:5px 5px 6px rgba(20,27,33,0.5);
 }
 
 .footAni {
@@ -211,7 +211,7 @@ h1, h2, h3, h4, h5, a {
     height: 3vw;
     line-height: 3vw;
     z-index: 2;
-    background: #000000;
+    background: #20242f;
     white-space: nowrap;
 }
 

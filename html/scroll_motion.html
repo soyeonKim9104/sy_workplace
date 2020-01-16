@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>스크롤에 따른 모션 주기</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="../css/scroll_motion.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+</head>
+<body>
+    <section class="target-section section1">
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top"></div>
+                <div class="right_top"></div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom"></div>
+            </div>
+            <h2 style="color:#73726d;">Nothing fails<br/>like <span class="point">success.</span></h2>
+            <div class="circle"></div>
+            <div class="mouse animated slideInDown infinite"><a href="#first_here"></a></div>
+        </div>
+    </section>
+    <section class="target-section ready section2" id="first_here">
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top">kim so yeon</div>
+                <div class="right_top">2020</div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom">work place</div>
+            </div>
+            <h2>The first duty of<br/><span class="point">love is</span> to listen.</h2>
+        </div>
+    </section>
+    <section class="target-section ready section3">
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top"></div>
+                <div class="right_top"></div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom"></div>
+            </div>
+            <h2>Let no one ever come to<br/> you without leaving<br/> better and <span class="point">happier.</span></h2>
+        </div>
+    </section>
+    <section class="target-section ready section4">
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top"></div>
+                <div class="right_top"></div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom"></div>
+            </div>
+            <h2><span class="point">Wish</span> not so much<br/> to live long as<br/> to live well.</h2>
+        </div>
+    </section>
+    <section class="target-section ready section5">
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top"></div>
+                <div class="right_top"></div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom"></div>
+            </div>
+            <h2><span class="point">Without friends</span><br/> no one would<br/> choose to live,<br/> though he had<br/> all other goods.</h2>
+        </div>
+    </section>
+    <section class="target-section ready section6">
+        <div class="stripes">
+            <div class="stripe" id="s1"></div>
+            <div class="stripe" id="s2"></div>
+            <div class="stripe" id="s3"></div>
+            <div class="stripe" id="s4"></div>
+            <div class="stripe" id="s5"></div>
+        </div>
+        <div class="row">
+            <div class="rectangle">
+                <div class="left_top"></div>
+                <div class="right_top"></div>
+                <div class="left_bottom"></div>
+                <div class="right_bottom"></div>
+            </div>
+            <h2>There is no<br> remedy for <span class="point">love</span><br> but to <span class="point">love</span> more.</h2>
+        </div>
+    </section>
+
+
+<script>
+    jQuery(document).ready(function($) {
+        $window = $(window);
+
+        // 다음 섹션이 브라우저 하단으로부터 200px 만큼 보여질때
+        var delayPosition = 200,
+            // 현재 브라우저의 높이값
+            windowheight;
+
+        // 브라우저의 크기가 변하면 대상 엘리먼트의 위치값을 다시 할당
+        $window.on('resize', function() {
+            insertTargetPosition();
+        });
+
+        // 스크롤이 이동할때
+        $window.on('scroll', function() {
+            // 현재의 위치 = 스크롤이 이동한 값 + 윈도우 높이 - 처음에 선언한 지연 위치값(200);
+            var position = $window.scrollTop() + windowheight - delayPosition;
+
+            // 아직 활성화되지 않은 타겟 엘리먼트를 순회하여
+            $('.target-section.ready').each(function() {
+                // 활성화되어 있지 않고 타겟의 위차값이 현재 위치값보다 작으면
+                if(!$(this).hasClass('active') && $(this).data('offsetTop') < position) {
+                    // 활성화
+                    $(this).addClass('active');
+                    // 활성화 된 엘리먼트는 이후 타겟에서 제외
+                    $(this).removeClass('ready');
+                }
+            });
+        });
+
+        function insertTargetPosition() {
+            windowheight = $window.height(); // 브라우저의 높이값 할당
+            var totalPrint = $('.target-section').length; //해당 클래스 총 개수
+
+            $('.target-section').each(function() { // 모든 대상 엘리먼트에
+                $(this).data('offsetTop', ($(this).offset().top)); // 각자의 위치 값을 할당
+
+                /*section counting*/
+                var numberPrint = $(this).index() + 1;
+                $(this).find('.left_bottom').html(numberPrint + '/' + totalPrint);
+            });
+        }
+
+        (function init() {
+            // 최초 진입시 각 섹션의 위치값을 할당
+            // 컨텐츠 중에 이미지 파일이 있거나 비동기로 가져오는 값이 있다면, 대상 요소들이 모두 불러진 후에
+            // 각 섹션의 위치값을 다시 할당해 줘어야 합니다.
+            insertTargetPosition();
+        })();
+    });
+
+    /*last stripes*/
+    $(function () {
+        var $location = $('.section6');
+        var $offset = 500;
+        var $locationOST = $location.offset().top - $offset;
+
+        $(window).scroll(function () {
+            if($(this).scrollTop() > $locationOST){
+                $('.stripe').each(function (idx) {
+                    var $this = $(this);
+                    setTimeout(function () {$this.addClass('animate_down');}, 100*idx);
+                });
+            }
+        });
+    });
+
+</script>
+</body>
+</html>
