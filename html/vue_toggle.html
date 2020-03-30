@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .togglebutton{
+            padding:10px;
+            background-color: blue;
+            color:#fff;
+            cursor: pointer;
+        }
+        .element{
+            padding:10px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div v-on:click="toggle" class="togglebutton">toggle button</div>
+        <vue-slide-up-down :active="active">
+            <div class="element">
+                Vue slide toggle!
+            </div>
+        </vue-slide-up-down>
+    </div>
+
+
+ <!--JS-->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="../js/slide-up-down.js"></script>
+
+<script>
+    import SlideUpDown from 'vue-slide-up-down'
+    Vue.component('vue-slide-up-down', VueSlideDown)
+
+    new Vue({
+        el:'#app',
+        data:() => ({
+            active:true,
+        }),
+        methods:{
+            toggle(){
+                this.active = !this.active;
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>
