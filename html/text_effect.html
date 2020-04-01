@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main_intro{
+            position: relative;
+        }
+
+        .main_copy{
+            position: absolute;
+            transition: transform .4s ease-out;
+            z-index: 0;
+            top:50vh;
+            margin-top:-11.4vw;
+            left: 50%;
+            font-size: 7.7vw;
+            margin-left: -29vw;
+            font-weight: 600;
+            line-height: 10vw;
+            text-align: center;
+        }
+
+        .mc_text{
+            position: relative;
+        }
+
+        .mc_text .main_text{
+            width:100%;
+            opacity: 0;
+        }
+
+        .main_text_ani{
+            position: absolute;
+            left: 0;
+            top:0;
+            width:105%;
+            text-align: left;
+        }
+
+        .main_text_ani span{
+            display: inline-block;
+        }
+        .text_underline{
+            background-color:#333;
+            height:6px;
+            display: block;
+            position: absolute;
+            bottom:1.5vw;
+            left: 0;
+            width:97%;
+            z-index: 3;
+        }
+        .shadow_text1, .shadow_text2{
+            display:none;
+        }
+        .shadow_text1{
+            position: absolute;
+            color: gray;
+            opacity: .4;
+            top:0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .shadow_text2{
+            position: absolute;
+            color: #ababab;
+            opacity: .3;
+            top:0;
+            left: 0;
+            z-index: -1;
+            filter: blur(2px);
+        }
+
+        .text_mask{
+            position: absolute;
+            display: inline-block;
+            width:100%;
+            height: 20vw;
+            top:8.5vw;
+            left:0;
+            background-color: #fff;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="main_intro">
+        <div class="main_copy">
+            <div class="mc_text main_text">
+                <div class="main_text">디자이너에 의한,</div>
+                <div class="main_text_ani">
+                    <span class="m_t1">디</span>
+                    <span class="m_t2">자</span>
+                    <span class="m_t3">이</span>
+                    <span class="m_t4">너</span>
+                    <span class="m_t5">에&nbsp;</span>
+                    <span class="m_t6">의</span>
+                    <span class="m_t7">한</span>
+                    <span class="m_t8">,</span>
+                </div>
+                <span class="text_underline"></span>
+                <div id="mt_sd11" class="shadow_text1">디자이너에 의한,</div>
+                <div id="mt_sd12" class="shadow_text2">디자이너에 의한,</div>
+                <div class="text_mask"></div>
+            </div>    
+
+            <div class="mc_text main_text">
+                <div class="main_text">디자이너를 의한,</div>
+                <div class="main_text_ani">
+                    <span class="m_t1">디</span>
+                    <span class="m_t2">자</span>
+                    <span class="m_t3">이</span>
+                    <span class="m_t4">너</span>
+                    <span class="m_t5">를&nbsp;</span>
+                    <span class="m_t6">의</span>
+                    <span class="m_t7">한</span>
+                    <span class="m_t8">,</span>
+                </div>
+                <span class="text_underline"></span>
+                <div id="mt_sd11" class="shadow_text1">디자이너를 의한,</div>
+                <div id="mt_sd12" class="shadow_text2">디자이너를 의한,</div>
+                <div class="text_mask"></div>
+            </div>
+            <span class="text_underline"></span>
+            <div id="mt_sd13" class="shadow_text1">디자이너를 의한,</div>
+            <div id="mt_sd14" class="shadow_text2">디자이너를 의한,</div>
+            <div class="text_mask"></div>   
+        </div>
+    </div> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+
+    <script>
+        function test() {
+            var t = this
+            , e = t.$createElement
+            , n = t._self._c || e;
+            return n("div", {
+                staticClass: "main_copy"
+            }, [n("div", {
+                staticClass: "mc_text main_text"
+            }, [n("div", {
+                staticClass: "main_text"
+            }, [t._v("디자이너에 의한,")]), t._v(" "), n("div", {
+                staticClass: "main_text_ani"
+            }, [n("span", {
+                staticClass: "m_t1"
+            }, [t._v("디")]), n("span", {
+                staticClass: "m_t2"
+            }, [t._v("자")]), n("span", {
+                staticClass: "m_t3"
+            }, [t._v("이")]), n("span", {
+                staticClass: "m_t4"
+            }, [t._v("너")]), n("span", {
+                staticClass: "m_t5"
+            }, [t._v("에 ")]), n("span", {
+                staticClass: "m_t6"
+            }, [t._v("의")]), n("span", {
+                staticClass: "m_t7"
+            }, [t._v("한")]), n("span", {
+                staticClass: "m_t8"
+            }, [t._v(",")])]), t._v(" "), n("span", {
+                staticClass: "text_underline"
+            }), t._v(" "), n("div", {
+                staticClass: "shadow_text1",
+                attrs: {
+                    id: "mt_sd11"
+                }
+            }, [t._v("디자이너에 의한,\n          ")]), t._v(" "), n("div", {
+                staticClass: "shadow_text2",
+                attrs: {
+                    id: "mt_sd12"
+                }
+            }, [t._v("디자이너에 의한,\n          ")]), t._v(" "), n("div", {
+                staticClass: "text_mask"
+            })]), t._v(" "), n("div", {
+                staticClass: "mc_text main_text"
+            }, [n("div", {
+                staticClass: "main_text"
+            }, [t._v("디자이너를 위한,")]), t._v(" "), n("div", {
+                staticClass: "main_text_ani"
+            }, [n("span", {
+                staticClass: "m_t1"
+            }, [t._v("디")]), n("span", {
+                staticClass: "m_t2"
+            }, [t._v("자")]), n("span", {
+                staticClass: "m_t3"
+            }, [t._v("이")]), n("span", {
+                staticClass: "m_t4"
+            }, [t._v("너")]), n("span", {
+                staticClass: "m_t5"
+            }, [t._v("를 ")]), n("span", {
+                staticClass: "m_t6"
+            }, [t._v("위")]), n("span", {
+                staticClass: "m_t7"
+            }, [t._v("한")]), n("span", {
+                staticClass: "m_t8"
+            }, [t._v(",")])]), t._v(" "), n("span", {
+                staticClass: "text_underline"
+            }), t._v(" "), n("div", {
+                staticClass: "mc_text shadow_text1",
+                attrs: {
+                    id: "mt_sd13"
+                }
+            }, [t._v("디자이너를 위한,\n          ")]), t._v(" "), n("div", {
+                staticClass: "mc_text shadow_text2",
+                attrs: {
+                    id: "mt_sd14"
+                }
+            }, [t._v("디자이너를 위한,\n          ")]), t._v(" "), n("div", {
+                staticClass: "text_mask"
+            })])])
+        }
+
+
+        test();
+    </script>
+
+</body>
+</html>
