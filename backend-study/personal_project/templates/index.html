@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>ddddd</title>
+    <!-- JQuery를 import 합니다 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='index.css')}}" /> -->
+    <link rel="stylesheet" href="../static/index.css" />
+    
+    <style type="text/css">
+      div.question-box {
+        margin: 10px 0 20px 0;
+      }
+      table {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+
+      td, th {
+        padding: 10px;
+        border: 1px solid;
+      }
+    </style>
+
+    <script>
+      function q1() {
+        $.ajax({
+            url:'http://openapi.seoul.go.kr:8088/6759515457736f7939386656646878/json/bikeList/1/99',
+            type:'GET',
+            data:{},
+            success:function(response){
+                //console.log(response);
+                let data = response["rentBikeStatus"];
+                let rows = data["row"];
+                //console.log(rows);
+
+                //$('#names-q1').empty();
+
+                for(let i = 0; i < rows.length; i++){
+                    
+                    let bikeLocation = rows[i]["stationName"]; //위치
+                    let bikeTotal = rows[i]["rackTotCnt"]; //총거치대수
+                    let bikeNm = rows[i]["parkingBikeTotCnt"]; //현재 거치된 자전거의 수
+                    let stationLatitude = rows[i]["stationLatitude"] // 왼쪽좌표
+                    let stationLongitude = rows[i]["stationLongitude"] // 오른쪽좌표
+                    
+                    let html = `<tr style="color : ${bikeNm < 5 ? 'red' : 'black'};">\ 
+                        <td>${bikeLocation}</td>\
+                        <td>${bikeTotal}</td>\
+                        <td>${bikeNm}</td>\
+                        </tr>`;
+
+                    $('#names-q1').append(html);
+
+                }
+
+            },
+            error:function(error){
+                
+            }
+        });
+      }
+
+      q1();
+    </script>
+
+  </head>
+  <body>
+    <!--<h1>JQuery+Ajax의 조합을 연습하자!</h1>
+    <div class="question-box">
+      <h2>2. 서울시 OpenAPI(실시간 따릉기 현황)를 이용하기</h2>
+      <p>모든 위치의 따릉이 현황을 보여주세요</p>
+      <p>업데이트 버튼을 누를 때마다 지웠다 새로 씌여져야 합니다.</p>
+      <button onclick="q1()">업데이트</button>
+      <table>
+        <thead>
+          <tr>
+            <td>거치대 위치</td>
+            <td>거치대 수</td>
+            <td>현재 거치된 따릉이 수</td>
+          </tr>
+        </thead>
+        <tbody id="names-q1">
+        </tbody>
+      </table>
+    </div>-->
+    
+    <div class="wrap">
+        <div class="mobile_area">
+            <!--header-->
+            <div class="header">
+              <div id="menu" class="menu"><span></span><span></span><span></span></div>
+              <div class="logo"><em>서울</em>따릉이</div>
+              <div class="search_icon"></div>
+              <!--<div class="search">
+                <input type="search" name="keyword" placeholder="search">
+              </div>-->
+            </div>
+            <!--지도-->
+            <div id="map" style="width:100%;height:400px;"></div>
+
+            <!--fixed bottom bar-->
+            <div class="bottom_bar">
+              <div id="bike-locate"></div>
+              <ul>
+                <li id="bike">
+                  <div class="con">
+                    <p>대여 가능한 자전거</p>
+                    <div id="bike_nm"></div>
+                    <div class="date">
+                      오늘 <span></span>
+                    </div>
+                  </div>
+                </li>
+                <li id="rent">
+                  <button type="submit">대여하기</button>
+                </li>
+                <li class="list"><a href="#" target="_blank">서울시<br/>거치대</a></li>
+              </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=058e4c4c77fbcbfe840f69b7963f8bff"></script>
+    <script>
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = { 
+                center: new kakao.maps.LatLng(37.575273, 126.907035), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };
+
+        // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+        var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+        // 마커가 표시될 위치입니다 
+        var markerPosition  = new kakao.maps.LatLng(37.575273, 126.907035); 
+
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            position: markerPosition
+        });
+
+        // 마커가 지도 위에 표시되도록 설정합니다
+        marker.setMap(map);
+
+        // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
+        // marker.setMap(null);    
+
+    </script>
+  </body>
+</html>

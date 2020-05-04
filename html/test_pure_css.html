@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+  margin: 0;  
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  position: sticky;
+  bottom: 0;
+  background-color: white;
+  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.1);
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.item {
+  margin: 10px 7px;
+}
+
+.content {
+  margin: auto;
+  max-width: 768px;
+  padding: 0 30px;
+  color: rgba(0,0,0,0.4);
+}
+
+.header {
+  text-align: center;
+  border-bottom: 3px solid blue;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 0 auto 20px;
+}
+
+.title {
+  display: inline-block;
+  margin: 0;
+}
+
+.description {
+  color: black;
+}
+
+.footer {
+  border-top: 1px solid lightgray;
+  text-align: center;
+  padding: 15px 20px;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a:hover {
+  color: darkblue;
+}
+
+@media only screen and (min-width: 768px) {
+  .nav {
+    order: 2;
+    top: 0;
+    bottom: initial;
+  }
+  
+  .content {
+    order: 3;
+  }
+}
+    </style>
+</head>
+<body>
+    
+    
+<section class="main">
+    <header class="header">
+      <h1 id="title" class="title">Pure CSS Sticky Bar</h1>
+    </header>
+    <div id="content" class="content">
+    <p class="description">The menu position should be sticky in the bottom for mobile and sticky in the top but under the title for desktop, this behavior is created with position: sticky and display: flex.</p>
+    
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut accumsan metus. Sed convallis condimentum odio ac interdum. Nulla laoreet vitae tortor in blandit. Etiam interdum commodo leo, eu tristique ante dignissim congue. Fusce eleifend aliquet enim, quis egestas tortor fringilla sed. Donec venenatis, eros a faucibus congue, felis elit interdum sapien, ac rutrum arcu magna quis mi. Phasellus pretium metus quis sem finibus mollis. Suspendisse potenti. Nunc tempor vehicula vehicula. Sed nec facilisis sapien. Cras est lectus, condimentum quis ornare eget, accumsan sed ipsum. Phasellus mollis porta leo id sodales. Maecenas rhoncus mi id venenatis pretium.</p>
+  
+      <p>Cras urna ipsum, cursus in leo sit amet, vestibulum dictum est. Vivamus hendrerit leo nec ex efficitur, eget finibus sapien vulputate. Suspendisse ut odio nisl. Sed consectetur eget eros dignissim faucibus. Nunc interdum rutrum aliquam. Morbi viverra quam vitae justo interdum, tincidunt gravida erat ornare. Fusce id ipsum fermentum, facilisis eros posuere, condimentum tortor. Mauris dictum consectetur metus, eu venenatis arcu dignissim sit amet. Aliquam posuere blandit ligula id hendrerit. Morbi consequat lorem ac dolor imperdiet, ut pharetra urna euismod. Proin ac ex ac arcu facilisis venenatis. Fusce nec augue tellus. Phasellus pellentesque egestas ante, vel sodales felis faucibus eget. Donec suscipit aliquet leo vel elementum. Aliquam erat volutpat. Maecenas pulvinar velit a sagittis vehicula.</p>
+  
+      <p>Donec lobortis viverra velit, sollicitudin fringilla tortor lobortis vel. Curabitur placerat, eros id iaculis finibus, purus arcu lacinia ipsum, non consectetur diam odio vitae tellus. Quisque ultrices turpis pretium, bibendum quam ac, ornare libero. Donec at erat est. Nullam augue augue, vestibulum eget velit at, porta tristique leo. Praesent a mauris eget massa consequat tempor. In vel dignissim enim. Vestibulum cursus consectetur tristique. Cras in eros vestibulum, consequat enim posuere, maximus augue. Pellentesque ut ante vitae est efficitur porttitor in auctor nibh. Praesent accumsan felis eu magna ultrices interdum. Aenean porta in dui pretium feugiat. Mauris tincidunt lacinia porta.</p>
+  
+      <p>Donec scelerisque lacinia feugiat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur mattis felis id nulla luctus, non ornare lorem consequat. Phasellus sem eros, aliquam vitae congue vel, pharetra vulputate tortor. Cras eu lorem neque. Praesent ornare, nibh quis cursus auctor, orci lorem semper nisi, nec hendrerit lorem dui sit amet odio. In vitae vehicula est.</p>
+  
+      <p>Ut nulla libero, consequat venenatis lectus sed, ultricies condimentum enim. Maecenas id mattis metus. Vivamus varius dui at ligula mollis, quis commodo arcu suscipit. Aliquam finibus orci ipsum, non cursus felis feugiat non. Proin turpis neque, consectetur dictum diam non, volutpat viverra nulla. Praesent congue gravida nunc venenatis vehicula. Nam vel facilisis elit, ac varius turpis. Vestibulum eu orci consequat, blandit leo sed, tincidunt urna. Vestibulum sed augue luctus, convallis lacus nec, dignissim diam. Maecenas sem augue, ultricies cursus vestibulum sit amet, aliquam a sem. Phasellus pellentesque lorem nibh, a varius libero pulvinar vel. Suspendisse et mauris a nunc tincidunt volutpat a eu sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus neque, scelerisque in velit vel, condimentum semper elit. Nam tempor tristique quam sed pellentesque. Sed quis egestas lacus.</p>
+  
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In imperdiet, justo eget mattis tristique, eros metus dictum mi, sed molestie neque magna pulvinar enim. Duis vel turpis lobortis, euismod nisl a, interdum sem. Nam vestibulum scelerisque porta. In mattis metus ut eros varius, ac scelerisque mauris finibus. Maecenas facilisis semper fermentum. Mauris purus nulla, semper vitae venenatis ut, mollis ut sem. Praesent gravida urna lorem, quis sollicitudin ligula eleifend quis. Mauris vitae ante quis neque egestas vulputate. Sed in odio justo. Suspendisse blandit fringilla dolor id scelerisque. Proin in velit ipsum. Etiam non libero vehicula, tristique arcu ac, feugiat tellus. Morbi ligula est, eleifend ut dolor sed, sollicitudin volutpat risus.</p>
+  
+      <p>Praesent maximus, turpis quis ullamcorper consectetur, urna magna interdum quam, at tempus augue nunc in tellus. Aenean magna lacus, dapibus eleifend dolor a, ultricies rutrum sem. Sed semper ex ac quam malesuada, bibendum mattis mauris semper. Vestibulum luctus rutrum enim porttitor vulputate. Nunc ut justo dapibus, varius sem id, accumsan arcu. Nullam ac mollis odio. Aenean lacinia eget leo at tincidunt. Sed id justo in arcu blandit sollicitudin. Etiam ultricies ultricies erat. Mauris feugiat tellus sed justo accumsan tempor. Pellentesque sed tellus hendrerit, sodales sapien sed, facilisis leo. Mauris sodales dui ac consequat ornare. Aliquam eget posuere metus, nec maximus diam. Proin venenatis convallis interdum.</p>
+  
+      <p>Ut mi odio, ultrices eu ullamcorper a, vulputate id nisi. Nullam dictum sapien nunc, vitae semper orci hendrerit eu. Fusce fringilla lorem in mollis eleifend. Pellentesque quis malesuada justo, sed suscipit est. Proin venenatis orci sed tortor pharetra, facilisis consequat nibh faucibus. Etiam pulvinar lectus non nulla placerat gravida. In vehicula suscipit scelerisque. Morbi eu consectetur erat, id volutpat enim.</p>
+  
+      <p>Proin vel nisi tellus. Duis facilisis elit id tortor ultrices porttitor. Fusce mattis et tortor sed ornare. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam convallis nulla metus, vitae suscipit urna placerat ac. Quisque vehicula magna nec porttitor auctor. Aenean porttitor nunc ut felis ultricies, at consectetur nisl dignissim. Aenean at eleifend justo. Donec eu fermentum nunc. Cras non diam sapien. Donec lobortis nec tortor non tempor. Suspendisse ac tortor malesuada, dapibus purus nec, dapibus ante.</p>
+  
+      <p>Nam id tellus a tortor placerat tempus. Proin molestie dignissim quam, ut sollicitudin lectus faucibus ut. Fusce consequat dui vel tellus placerat, nec varius ante auctor. Etiam nunc diam, pretium vel nunc sed, suscipit pellentesque nisl. Sed ut ipsum ut tortor commodo condimentum nec at arcu. Etiam metus sem, faucibus non convallis non, accumsan sed nulla. Maecenas felis mauris, volutpat eu aliquam at, faucibus ac diam. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec et velit eu neque eleifend mattis eget id lectus. Vivamus elit ligula, sodales eu pulvinar sit amet, congue eu quam. Vivamus erat quam, vehicula nec augue at, pretium gravida lectus.</p>
+  </div>
+    <nav class="nav">
+      <ul class="menu">
+        <li class="item"><a href="#title">Title</a></li>
+        <li class="item"><a href="#content">Content</a></li>
+        <li class="item"><a href="#footer">Footer</a></li>
+      </ul>
+    </nav>
+  </section>
+  <footer id="footer" class="footer">
+    By <a href="https://github.com/alopezm">Anderson LM</a>
+  </footer>
+  
+  
+
+</body>
+</html>
