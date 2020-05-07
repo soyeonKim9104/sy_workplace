@@ -1,0 +1,151 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+display: block;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+/*S : 2020 OKR sticky style*/
+
+.l-grid.wide .img-section.wide{
+	display:flex;
+}
+
+.sample-text{
+display:flex;
+justify-content:center;
+align-items:center;
+width:100%;
+font-size:6em;
+color:#fff;
+}
+
+.sticky-tab-container{
+display: flex;
+flex-direction: row;
+position: absolute;
+bottom:0;
+width:100%;
+height:70px;
+box-shadow:0 0 20px rgba(0,0,0,0.1);
+background: #fff;
+z-index: 10;
+/*display: -webkit-box;
+-webkit-box-orient: horizontal;
+-webkit-box-direction: normal;*/
+}
+
+.sticky-tabs, .sticky-slide{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;;
+position: relative;
+text-align: center;
+/*display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-box-direction: normal;
+-webkit-box-pack: center;
+-webkit-box-align: center;*/
+}
+
+.sticky-slide .img-section-wrap{
+	width:100%;
+}
+
+.sticky-tab-container--top{
+	position: fixed;
+	top:0;
+}
+
+.sticky-tab{
+display: flex;
+justify-content: center;
+align-items: center;
+flex: 1;
+color: #000;
+letter-spacing: 0.1rem;
+transition: all 0.5s ease;
+font-size: 0.8rem;
+display: -webkit-box;
+-webkit-box-pack: center;
+-webkit-box-align: center;
+-webkit-box-flex: 1;
+-webkit-transition: all 0.5s ease;
+}
+
+.sticky-tab:hover{
+color: white;
+background:#f6b37f;
+transition: all 0.5s ease;
+-webkit-transition: all 0.5s ease;
+}
+
+.sticky-tab:nth-child(2):hover{
+background:#cce198;
+}
+
+.sticky-tab:nth-child(3):hover{
+background:#7ecef4;
+}
+
+.sticky-tab:nth-child(4):hover{
+background:#c490bf;
+}
+
+.sticky-tab:nth-child(5):hover{
+background:#fff799;
+}
+
+.sticky-tab-slider{
+position:absolute;
+bottom:0;
+width:0;
+height:6px;
+background: #66b1f1;
+transition: left 0.3s ease;
+-webkit-transition:left 0.3s ease;
+}
+
+/*E : 2020 OKR sticky style*/
