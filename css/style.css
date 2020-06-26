@@ -33,6 +33,10 @@ body {
     background: linear-gradient(to top, #dc7b08, #ffa31c, #fbad27);
 }
 
+li{
+    list-style: none;
+}
+
 .navIcon,
 .navIcon .bar,
 .navIcon .bar::before,

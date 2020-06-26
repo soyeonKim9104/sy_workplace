@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../sy_workplace/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .js-cont-noscroll {position: fixed;top: 0;left: 0;overflow-y: scroll;width: 100%;height: auto;}
+        .html-section {position: relative;background-color: #c5d5e7;}
+        .youtube-area .dimmed {z-index: 1000;position: fixed;top: 0;left: 0;width: 100%;height: 100%;background-color: #000;opacity: .5; }
+        .youtube-area .contents {z-index: 1001; position: fixed; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); transform: translate(-50%, -50%);-webkit-transform-style: preserve-3d;transform-style: preserve-3d;-webkit-perspective: 900px;perspective: 900px;width: 75vw; height: 45vw; max-width: 1080px; max-height: 608px; min-width: 310px; min-height: 260px; }
+        .youtube-area iframe {-webkit-transform-origin: bottom;-ms-transform-origin: bottom;transform-origin: bottom;}
+        .youtube-area .header {position: absolute;top: -50px;right: 0;width: 1080px;min-width: auto;height: 50px;background: #5d5d5d;}
+        .youtube-area .tit {position: absolute;top: 15px;left: 15px;font-size: 16px;color: #fff;-o-text-overflow: ellipsis;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 800px;}
+        .youtube-area .btn-close {opacity: 1;position: absolute;top: -85px;right: 0;width: 65px;height: 65px;background: url(https://cdnm.shop.tworld.co.kr/pimg/plan_editor/202002/46030313781424284.png);background-size: cover;background-position: 0 0;}
+        .youtube_list {margin: 0 40px;}
+        .youtube_list li {position: relative;height: 315px;margin-top: 20px;background-color: #fff;}
+        .youtube_list li:first-child {margin-top: 0;}
+        .youtube_list .tit {position: absolute;top: 40px;left: 600px;font-size: 24px;font-weight: normal;color: #5e5e5e;line-height: 37px;}
+        .youtube_list .tit em {display: block;font-size: 34px;font-weight:bold;color: #000;margin-top: 10px;line-height: 44px;}
+        .youtube_list .tit em span {font-size: 28px;}
+        .youtube_list .date {position: absolute;bottom: 30px;right: 35px;color: #5e5e5e;font-size: 24px;}
+        .youtube_list .img_thumb {width: auto;height: 100%;}
+        button.tp_btn{position: absolute; padding: 0; color: transparent; background: rgba(255,255,255,0); border: none;}
+        .youtube_list .tp_btn {top: 0; left: 0; width: 560px;height: 315px;}
+        .youtube_list .tp_btn .ytp-large-play-button-bg {transition: fill .32s cubic-bezier(0.0,0.0,0.2,1),fill-opacity .25s cubic-bezier(0.0,0.0,0.2,1);}
+        .youtube_list .tp_btn:hover .ytp-large-play-button-bg {transition: fill .12s cubic-bezier(0.0,0.0,0.2,1),fill-opacity .12s cubic-bezier(0.0,0.0,0.2,1);fill: #f00;  fill-opacity: 1}
+    </style>
+</head>
+<body style="background:#fff;">
+    <div class="html-section">
+        <ul class="list_area youtube_list">
+            <li>
+                <h4 class="tit">갤럭시 A 퀀텀 <em>오늘 사면, 오늘 도착!</em></h4>
+                <img class="img_thumb" src="https://img.youtube.com/vi/yEHmhPDjA9Q/maxresdefault.jpg" alt="">
+                <button type="button" title="유튜브 팝업열기" class="tp_btn" data-youtube-url="https://www.youtube.com/embed/yEHmhPDjA9Q">
+                    <svg height="45px" version="1.1" viewBox="0 0 68 48" width="100%">
+                        <path class="ytp-large-play-button-bg" d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-0.13,27.1-1.55c2.93-0.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#212121" fill-opacity="0.8"></path>
+                        <path d="M 45,24 27,14 27,34" fill="#fff"></path>
+                    </svg><span class="hidden">유튜브 팝업열기</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+<script src="../js/jquery-1.10.2.min.js"></script>
+
+<script>
+    (function(){
+        var youtube = {
+            init: function(){
+                if(youtube.browserChk()){
+                    youtube.open();
+                    youtube.close();
+                }
+            },
+            browserChk: function(){
+                var isBrowser = navigator.userAgent.toLowerCase();
+                return !(isBrowser.indexOf('msie 7') != -1 || isBrowser.indexOf('msie 8') != -1);
+            },
+            open: function(){
+                $('[data-youtube-url]').off('click.modalYoutube').on('click.modalYoutube', function(){
+                    if(!$('.youtube-area .dimmed').length) {
+                        var winTop = $(window).scrollTop();
+                        var url = $(this).data('youtube-url')+'?autoplay=0&color=white';
+                        var html = '<div class="contents">'
+                                + '<button type="button" class="btn-close youtube"><span class="hidden">팝업 닫기</span></button>'
+                                + '<iframe width="100%" height="100%" src="'+url+'" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                                + '</div>';
+                        $(this).after('<div class="youtube-area"></div>').siblings('.youtube-area').append(html).append('<div class="dimmed"></div>');
+                        $('body').addClass('js-cont-noscroll').css('top',-winTop);
+                        // focus event
+                        youtube.focus(this);
+                    }
+                });
+            },
+            close: function(){
+                $(document).off('click.modalCloseYoutube').on('click.modalCloseYoutube', '.youtube-area .btn-close, .youtube-area .dimmed',function(){
+                    var winTop = Math.abs($('body').css('top').replace(/[^-\d\.]/g, ''));
+                    $('.youtube-area').remove();
+                    $('body').removeClass('js-cont-noscroll');
+                    $(window).scrollTop(winTop)
+                });
+            },
+            focus: function(el){
+                var $youtubeCont = $(el).siblings('.youtube-area').children('.contents'); ;
+                var $btnClose = $('.btn-close.youtube');
+                $youtubeCont.prepend('<span class="modal_start" tabindex="0"></span>');
+                $youtubeCont.append('<span class="modal_end" tabindex="0"></span>');
+                $btnClose.focus();
+                $('.modal_end').off('focus.modalEnd').on('focus.modalEnd',function() { $btnClose.focus() });
+                $('.modal_start').off('focus.modalStart').on('focus.modalStart',function(){ $btnClose.focus() });
+            }
+        }
+        youtube.init();
+    })();
+</script>
+
+</body>
+</html>
